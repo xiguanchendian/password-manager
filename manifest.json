@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "网站密码管理器",
+  "version": "1.0.0",
+  "description": "安全可靠的通用网站密码管理工具，支持自动保存、填充和加密导出。",
+  "author": "Password Manager Team",
+  "homepage_url": "https://github.com/your-repo/password-manager",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "密码管理器"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "decrypt-passwords.html",
+        "decrypt-passwords.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "password-manager@example.com",
+      "strict_min_version": "109.0"
+    },
+    "edge": {
+      "browser_action_next_to_address_bar": true
+    }
+  }
+} 
